@@ -31,6 +31,6 @@ export default function Home() {
   // );
   // plan 2
   return router.push(
-    `https://my.cic.ac.id/portal/sipandai/views/validasi/demo.php?mod=sipandai&act=discuss&id=${discussId}&course_id=${discussId}`
+    `https://my.cic.ac.id/portal/sipandai/views/validasi/demo.php?mod=sipandai&act=discuss&id=${discussId}&course_id=${courseId}`
   );
 }
